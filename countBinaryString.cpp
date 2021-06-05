@@ -9,6 +9,7 @@ int countString(int n, int last_digit, int dp[][2]) {
 		else return 2;
 	}
 
+
 	if (dp[n][last_digit] != 0) {
 		return dp[n][0];
 	}

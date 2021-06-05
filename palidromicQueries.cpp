@@ -33,7 +33,8 @@ int pldStringdp(string s,int l,int r){
     }
     return dp[l][r];
 }
-
+//Space optimized solution
+//Kadane's algorithm
 int main(){
     int n; cin >> n;
     string s; cin >> s;

@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;const int N=4e5+7,mod=1e9+7;
+int n,m,i,j,a[N],b[N],c[N],id[N],d[N],g[N],dp[N],ans;set<int>s;
+void A(int&x,int v){x+=v;if(x>=mod)x-=mod;}
+void M(int x,int v){while(x<=2*n)A(c[x],v),x+=x&-x;}
+int Q(int x,int r=0){while(x)A(r,c[x]),x-=x&-x;return r;}
+int main(){
+	for(scanf("%d",&n),i=1;i<=n;++i)scanf("%d%d",a+i,b+i),id[i]=i;
+	sort(id+1,id+n+1,[&](int x,int y){return a[x]<a[y];});
+	for(scanf("%d",&m),i=1;i<=m;++i)scanf("%d",&j),d[j]=1,s.insert(b[j]);
+	for(i=1;i<=n;++i){j=id[i];g[j]=s.size()&&b[j]<=*s.rbegin();if(d[j])s.erase(b[j]);}
+	for(i=1;i<=n;++i)j=id[i],M(b[j],dp[j]=(mod+g[j]+Q(2*n)-Q(b[j]))%mod),A(ans,dp[j]);
+	printf("%d\n",ans);
+}
